@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.games-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.game-title {
+  font-size: 15px;
+  width: 70px;
+  border: 2px solid black;
+  background-color: yellow;
+  padding: 10px 10px;
+}
+
+.game-title:hover {
+  background-color: rgba(225, 225, 0, 0.3);
+  cursor: pointer;
+}
+
+.active-game {
+  background-color: rgba(225, 225, 0, 0.3);
+}

@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(115, 207, 238);
+}
+
+.game {
+  height: 300px;
+  width: 300px;
+  background-color: black;
+
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.snake-head {
+  height: 15px;
+  width: 15px;
+  background-color:greenyellow;
+  position: absolute;
+}
+
+.snake-body {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(140, 201, 49);
+  position: absolute;
+}
+
+.food {
+  height: 15px;
+  width: 15px;
+  background-color: red;
+  position: absolute;
+}
+
+.middle-section {
+  display: flex;
+  margin-top: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.rules {
+  padding-top: 50px;
+  background-color: blueviolet;
+  
+}
+
+.rules p {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.rules p img {
+  height: 30px;
+}
+
+.rules p span {
+  font-weight: bold;
+  margin-left:3px;
+  font-size: 20px;
+  color:lightblue;
+}
+
+.game-rules {
+  margin-top: 10px;
+  color: gray;
+  width: 423px;
+}
+
+.game-rules .obj {
+  color: rgb(180, 139, 139);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.game-rules span {
+  color:red;
+  font-size: 40px;
+  margin: 0 10px;
+}
+
+.restart-btn-hidden {
+  display: none;
+}
+
+
+.restart-btn {
+  display: initial;
+  padding: 15px 25px;
+  background-color: rgba(241, 26, 26, 1);
+  color: lightgray;
+  border: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  background-color:rgba(241, 26, 26, 0.8);
+}
+
+.restart-btn-hidden {
+  display: none;
+}
+
+.high-score {
+  color: rgb(253, 228, 87);
+  text-shadow: 1px 1px #0c0707;
+}
+
+.score {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: 50px;
+}
