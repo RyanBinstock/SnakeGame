@@ -3,10 +3,13 @@ import  { snake, snakeBiteItself, drawSnakeBody, updateSnake,
 import { foodX, foodY, generateFoodLocation,
   foodNotInSnake} from './food.js';
 import { saveHighScore } from './helpers.js';
+import { findNextMove } from './snakeai.js';
 
 export const tileWidth = 15;
 export const boardTileWidth = 20;
 export const boardWidth = tileWidth * boardTileWidth;
+
+
 
 let gameOver;
 
@@ -22,8 +25,10 @@ let prevKey;
 
 let intervalKey;
 
-addMoveListeners();
+//addMoveListeners();
 startGame();
+
+const test = findNextMove();
 
 function endOfGame() {
   if (score > highScore) {
@@ -33,7 +38,6 @@ function endOfGame() {
 
   document.querySelector('.restart-btn')
     .classList.remove('restart-btn-hidden');
-
 }
 
 function startGame() {
@@ -58,6 +62,7 @@ function eat() {
   })
 
   updateSnake();
+
   score++;
 }
 
@@ -89,7 +94,6 @@ function renderGame() {
 }
 
 function update() {
-
   if (snakeBiteItself() || outOfBounds()) {
     gameOver = true;
     clearInterval(intervalKey);
@@ -100,6 +104,7 @@ function update() {
       eat();
     } 
     renderGame();
+    aiMove();
     updateSnake();
     document.querySelector('.score')
       .innerHTML = `${score}`;
@@ -126,6 +131,29 @@ function outOfBounds() {
   }
 
   return result;
+}
+
+function aiMove() {
+  const coordinate = findNextMove();
+  const x = snake[0].snakeX / tileWidth;
+  const y = snake[0].snakeY / tileWidth;
+  if (x == coordinate.x) {
+    if (coordinate.y < y) {
+      //move = 'up';
+      modifySpeed('up');
+    } else {
+      //move = 'down';
+      modifySpeed('down');
+    }
+  } else if (y == coordinate.y) {
+    if (coordinate.x < x) {
+      //move = 'left';
+      modifySpeed('left');
+    } else {
+      //move = 'right';
+      modifySpeed('right');
+    }
+  }
 }
 
 function addMoveListeners() {
@@ -164,4 +192,3 @@ document.body.addEventListener('keydown', e => {
     startGame();
   }
 })
-
