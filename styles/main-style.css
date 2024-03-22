@@ -39,7 +39,6 @@ body {
 .middle-section {
   display: flex;
   margin-top: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .rules {
@@ -108,6 +107,7 @@ body {
 }
 
 .high-score {
+  display: none;
   color: rgb(253, 228, 87);
   text-shadow: 1px 1px #0c0707;
 }

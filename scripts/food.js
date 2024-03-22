@@ -1,24 +1,26 @@
 import { snake } from './snake.js';
-
+import { findNextMove } from './snakeai.js';
 import { tileWidth, boardTileWidth } from './script.js';
 
 export let foodX;
 export let foodY;
 
 export function generateFoodLocation() {
+  let count = 0
   do {
     foodX = (Math.floor(Math.random() * (boardTileWidth - 2)) + 1)
       * tileWidth;
 
-    if (foodX / tileWidth === 0) {
-      console.log('yup');
-      foodX += 1;
-    }
 
     foodY = (Math.floor(Math.random() * (boardTileWidth - 2)) + 1)
     * tileWidth;
 
-  } while (foodNotInSnake());
+    count++;
+
+    if (count > 200) {
+      break;
+    }
+  } while (foodNotInSnake() || closeToSnake() || findNextMove() === null);
 }
 
 export function foodNotInSnake() {
@@ -32,4 +34,18 @@ export function foodNotInSnake() {
   }
 
   return result;
+}
+
+export function closeToSnake() {
+  let dist;
+
+  for (let i = 0; i < snake.length; i++) {
+    dist = Math.sqrt(Math.pow(foodX / tileWidth - snake[i].snakeX / tileWidth, 2) + Math.pow(foodY / tileWidth - snake[i].snakeY / tileWidth, 2));
+
+    if (dist === 1) {
+      return true;
+    }
+  }
+
+  return false;
 }

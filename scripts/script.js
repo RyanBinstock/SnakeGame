@@ -1,7 +1,7 @@
 import  { snake, snakeBiteItself, drawSnakeBody, updateSnake,
   xSpeed, ySpeed, modifySpeed, initializeSnakePos } from './snake.js';
 import { foodX, foodY, generateFoodLocation,
-  foodNotInSnake} from './food.js';
+  foodNotInSnake, closeToSnake} from './food.js';
 import { saveHighScore } from './helpers.js';
 import { findNextMove } from './snakeai.js';
 
@@ -99,16 +99,32 @@ function update() {
     clearInterval(intervalKey);
     endOfGame();
 
-  } else {
-    if (ateFood()) {
-      eat();
-    } 
-    renderGame();
-    aiMove();
-    updateSnake();
-    document.querySelector('.score')
-      .innerHTML = `${score}`;
   }
+  if (ateFood()) {
+    eat();
+  } 
+  renderGame();
+  aiMove();
+  updateSnake();
+  document.querySelector('.score')
+    .innerHTML = `${score}`;
+  
+
+  // if (snakeBiteItself() || outOfBounds()) {
+  //   gameOver = true;
+  //   clearInterval(intervalKey);
+  //   endOfGame();
+
+  // } else {
+  //   if (ateFood()) {
+  //     eat();
+  //   } 
+  //   renderGame();
+  //   aiMove();
+  //   updateSnake();
+  //   document.querySelector('.score')
+  //     .innerHTML = `${score}`;
+  // }
 }
 
 function outOfBounds() {
