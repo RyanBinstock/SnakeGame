@@ -38,6 +38,9 @@ function endOfGame() {
 
   document.querySelector('.restart-btn')
     .classList.remove('restart-btn-hidden');
+
+    clearInterval(intervalKey);
+    startGame();
 }
 
 function startGame() {
@@ -151,6 +154,10 @@ function outOfBounds() {
 
 function aiMove() {
   const coordinate = findNextMove();
+  if (!coordinate) {
+    endOfGame();
+    return;
+  }
   const x = snake[0].snakeX / tileWidth;
   const y = snake[0].snakeY / tileWidth;
   if (x == coordinate.x) {

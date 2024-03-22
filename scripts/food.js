@@ -17,7 +17,8 @@ export function generateFoodLocation() {
 
     count++;
 
-    if (count > 200) {
+    if (count > 1000) {
+      console.log(count);
       break;
     }
   } while (foodNotInSnake() || closeToSnake() || findNextMove() === null);
